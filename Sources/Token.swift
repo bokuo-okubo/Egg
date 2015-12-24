@@ -10,9 +10,9 @@ import Foundation
 
 public struct Token {
 
-  var name: String
+  public let name: String
 
-  let method: (target: String, cursor: Int) -> Result
+  public let method: (target: String, cursor: Int) -> Result
 
   public init(name: String, method: (target: String, cursor: Int) -> Result ) {
     self.name = name
