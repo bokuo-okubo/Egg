@@ -10,18 +10,14 @@ import Foundation
 
 public typealias Egg = Token
 
-//public func tokenize(str: String) -> Token {
-//  return Token.tokenize(str)
+//public extension String {
+//  func toToken() -> Token {
+//    return Token.tokenize(String(self.characters))
+//  }
 //}
-
-public extension String {
-  func toToken() -> Token {
-    return Token.tokenize(String(self.characters))
-  }
-}
-
-public extension Int {
-  func toToken() -> Token {
-    return Token.tokenize(String(self.value))
-  }
-}
+//
+//public extension Int {
+//  func toToken() -> Token {
+//    return Token.tokenize(String(self.value))
+//  }
+//}
