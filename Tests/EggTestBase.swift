@@ -15,7 +15,6 @@ class EggTestBase: XCTestCase {
   func assert(real: Result, _ expect: Result) {
     XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
-    XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.tokenized, expect.tokenized)
   }
 
