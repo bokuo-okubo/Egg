@@ -106,4 +106,15 @@ class Token_StandardTests: EggTestBase {
     execTest(testList, token: HogeFooT)
   }
 
+  func testManyOrParse() {
+    let hogeOrFooT = $.or(hogeT, fooT)
+    let manyHogeOrFooT = $.many(hogeOrFooT)
+    let testStr = "hogefoohogefoo"
+
+    let real = manyHogeOrFooT.resolve(testStr)
+    let expect = TokenResult(isSuccess: true,
+      index: testStr.characters.count,
+      tokenized: ["hoge", "foo", "hoge", "foo"])
+    assert(real, expect)
+  }
 }

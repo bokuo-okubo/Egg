@@ -59,7 +59,7 @@ extension Token: Standard {
   private static func createEOF(token: Token) -> Token {
     return token.map("EOF", callback: { (tok: Token) -> (target: String, cursor: Int) -> Result in
       return { (target: String, cursor: Int) -> Result in
-        let result = tok.resolve(target)
+        let result = tok.method(target: target, cursor: cursor)
         let isLast = result.index == target.characters.count
         if isLast {
           return TokenResult(isSuccess: true, index: -1, tokenized: [])
@@ -106,20 +106,20 @@ extension Token: Standard {
   public static func not(token: Token) -> Token {
     return Token(name: "NOT[\(token.name)]",
       method: { (target: String, cursor: Int) -> Result in
-      let result = token.resolve(target)
+        let result = token.method(target: target, cursor: cursor)
 
-      if result.isSuccess {
-        return TokenResult(isSuccess: false, index: cursor, tokenized: [])
-      } else {
-        return TokenResult(isSuccess: true, index: target.characters.count, tokenized: [])
-      }
+        if result.isSuccess {
+          return TokenResult(isSuccess: false, index: cursor, tokenized: [])
+        } else {
+          return TokenResult(isSuccess: true, index: target.characters.count, tokenized: [])
+        }
     })
   }
 
   public static func option(token: Token) -> Token {
     return Token(name: "OPTION[\( token.name )]",
       method: { (target: String, cursor: Int) -> Result in
-      return Token.or(token, not(token)).resolve(target)
+        return Token.or(token, not(token)).method(target: target, cursor: cursor)
     })
   }
 
