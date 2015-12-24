@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		78025D3E1C2AB2BE00309E00 /* EggTestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78025D3D1C2AB2BE00309E00 /* EggTestBase.swift */; };
-		78B8F2D51C2ABC5A008A88E9 /* AtomicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B8F2D41C2ABC5A008A88E9 /* AtomicTests.swift */; };
+		784909E61C2BA92100372287 /* Token+StandardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784909E51C2BA92100372287 /* Token+StandardTests.swift */; };
 		78B93F851C2AA15400924B6D /* Egg.h in Headers */ = {isa = PBXBuildFile; fileRef = 78B93F841C2AA15400924B6D /* Egg.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78B93F8C1C2AA15400924B6D /* Egg.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78B93F811C2AA15400924B6D /* Egg.framework */; };
 		78B93FA41C2AA29A00924B6D /* Egg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FA01C2AA29A00924B6D /* Egg.swift */; };
@@ -18,7 +18,7 @@
 		78B93FAC1C2AA2A600924B6D /* Token+Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FA91C2AA2A600924B6D /* Token+Atomic.swift */; };
 		78B93FAD1C2AA2A600924B6D /* Token+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FAA1C2AA2A600924B6D /* Token+Extensions.swift */; };
 		78B93FAE1C2AA2A600924B6D /* Token+Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FAB1C2AA2A600924B6D /* Token+Standard.swift */; };
-		78B93FB01C2AA2EC00924B6D /* TokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FAF1C2AA2EC00924B6D /* TokenTests.swift */; };
+		78B93FB01C2AA2EC00924B6D /* Token+AtomicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B93FAF1C2AA2EC00924B6D /* Token+AtomicTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,7 +33,7 @@
 
 /* Begin PBXFileReference section */
 		78025D3D1C2AB2BE00309E00 /* EggTestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EggTestBase.swift; sourceTree = "<group>"; };
-		78B8F2D41C2ABC5A008A88E9 /* AtomicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AtomicTests.swift; sourceTree = "<group>"; };
+		784909E51C2BA92100372287 /* Token+StandardTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+StandardTests.swift"; sourceTree = "<group>"; };
 		78B93F811C2AA15400924B6D /* Egg.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Egg.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B93F841C2AA15400924B6D /* Egg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Egg.h; sourceTree = "<group>"; };
 		78B93F861C2AA15400924B6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +46,7 @@
 		78B93FA91C2AA2A600924B6D /* Token+Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Atomic.swift"; sourceTree = "<group>"; };
 		78B93FAA1C2AA2A600924B6D /* Token+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Extensions.swift"; sourceTree = "<group>"; };
 		78B93FAB1C2AA2A600924B6D /* Token+Standard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+Standard.swift"; sourceTree = "<group>"; };
-		78B93FAF1C2AA2EC00924B6D /* TokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenTests.swift; sourceTree = "<group>"; };
+		78B93FAF1C2AA2EC00924B6D /* Token+AtomicTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Token+AtomicTests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +103,10 @@
 		78B93F9B1C2AA22D00924B6D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				78B93FAF1C2AA2EC00924B6D /* TokenTests.swift */,
+				78B93FAF1C2AA2EC00924B6D /* Token+AtomicTests.swift */,
 				78B93F9D1C2AA22D00924B6D /* Info.plist */,
 				78025D3D1C2AB2BE00309E00 /* EggTestBase.swift */,
-				78B8F2D41C2ABC5A008A88E9 /* AtomicTests.swift */,
+				784909E51C2BA92100372287 /* Token+StandardTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -263,9 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				784909E61C2BA92100372287 /* Token+StandardTests.swift in Sources */,
 				78025D3E1C2AB2BE00309E00 /* EggTestBase.swift in Sources */,
-				78B93FB01C2AA2EC00924B6D /* TokenTests.swift in Sources */,
-				78B8F2D51C2ABC5A008A88E9 /* AtomicTests.swift in Sources */,
+				78B93FB01C2AA2EC00924B6D /* Token+AtomicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
