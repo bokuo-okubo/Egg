@@ -20,7 +20,7 @@ public struct TokenResult: Result {
   public let index: Int
   public let tokenized: [String]
 
-  init(isSuccess: Bool, index: Int, tokenized: [String]) {
+  public init(isSuccess: Bool, index: Int, tokenized: [String]) {
     self.paramDict = [:]
 
     (self.isSuccess, self.index, self.tokenized) = (isSuccess, index, tokenized)
