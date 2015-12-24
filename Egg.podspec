@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "Egg"
-  s.version      = "0.0.3"
+  s.version      = "0.0.1"
   s.summary      = "A Swift Tokenizer Library"
 
   s.description  = <<-DESC
