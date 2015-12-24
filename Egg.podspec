@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/bokuo-okubo/Egg.git" }
 
-  s.source_files  = "Sources"
+  s.source_files  = "Sources/**/*"
   # s.exclude_files = "Classes/Exclude"
   # s.public_header_files = "Classes/**/*.h"
 end
