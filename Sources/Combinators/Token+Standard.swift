@@ -132,7 +132,7 @@ extension Token: Standard {
       var current = cursor
 
       for token in tokens {
-        let result = token.resolve(target)
+        let result = token.method(target: target, cursor: current)
 
         if result.isSuccess {
           rtnData.appendContentsOf(result.tokenized)
