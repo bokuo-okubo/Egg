@@ -18,7 +18,7 @@ public class ScanResult: Resultable {
   public let index: Int
   public let data: [Content]
 
-  init(isSuccess: Bool, target: Target, index: Int, data: [Content]) {
+  public init(isSuccess: Bool, target: Target, index: Int, data: [Content]) {
     self.boolValue = isSuccess
     self.target = target
     self.index = index
@@ -27,13 +27,13 @@ public class ScanResult: Resultable {
 }
 
 public final class ScanTrue: ScanResult {
-  init(target: String, index: Int, data: [String]) {
+  public init(target: String, index: Int, data: [String]) {
     super.init(isSuccess: true, target: target, index: index, data: data)
   }
 }
 
 public final class ScanFalse: ScanResult {
-  init(target: String, index: Int) {
+  public init(target: String, index: Int) {
     super.init(isSuccess: false, target: target, index: index, data: [])
   }
 }
@@ -54,7 +54,7 @@ public final class Scanner: Scannable {
   public let name: String
   public let method: (target: String, cursor: Int) -> ScanResult
 
-  init(name: String, method: (target: String, cursor: Int) -> ScanResult ) {
+  public init(name: String, method: (target: String, cursor: Int) -> ScanResult ) {
     self.name = name
     self.method = method
   }
@@ -98,5 +98,9 @@ public final class Scanner: Scannable {
 
   public func resolve(target: String) -> ScanResult {
     return self.method(target: target, cursor: 0)
+  }
+
+  public func map(callback: Scanner -> Scanner) -> Scanner {
+    return callback(self)
   }
 }
