@@ -6,23 +6,15 @@
 //  Copyright © 2015 bko. All rights reserved.
 //
 
-public protocol Result {
-  var isSuccess: Bool { get }
-  var tokenized: [String] { get }
+public protocol Resultable: BooleanType {
+  typealias Target
+  typealias Content
+  var boolValue: Bool { get }
+  var target: Target { get }
   var index: Int { get }
+  var data: [Content] { get }
+
+  //  init(isSuccess:Bool, target: Target, index: Int, data: [Content])
 }
 
-public struct TokenResult: Result {
 
-  public var paramDict: [String : Int]
-
-  public let isSuccess: Bool
-  public let index: Int
-  public let tokenized: [String]
-
-  public init(isSuccess: Bool, index: Int, tokenized: [String]) {
-    self.paramDict = [:]
-
-    (self.isSuccess, self.index, self.tokenized) = (isSuccess, index, tokenized)
-  }
-}

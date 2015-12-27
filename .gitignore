@@ -5,7 +5,8 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -43,4 +44,7 @@ xcuserdata
 DerivedData
 *.xcuserstate
 
-
+vendor/
+vendor/bundle
+Gemfile*
+.bundle
