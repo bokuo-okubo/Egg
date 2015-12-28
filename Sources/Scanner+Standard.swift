@@ -34,12 +34,14 @@ extension Scanner: Standard {
       var current: Int = cursor
       var result: ScanResult
       var rtnData: [String] = []
+      var rtnParams: [String : String?] = [:]
       for scn in scanners {
         result = scn.method(target: target, cursor: current)
         rtnData.appendContentsOf(result.data)
+        rtnParams += result.params
         current = result.index
-        if result {
-          return ScanTrue(target: target, index: current, data: result.data)
+        if result.isSuccess {
+          return ScanTrue(target: target, index: current, data: result.data, params: [:])
         }
       }
       return ScanFalse(target: target, index: current)
@@ -58,7 +60,7 @@ extension Scanner: Standard {
       let result = scanner.method(target: target, cursor: cursor)
       let isLast = cursor == target.characters.count
       if isLast {
-        return ScanTrue(target: target, index: -1, data: result.data)
+        return ScanTrue(target: target, index: -1, data: result.data, params: [:])
       } else {
         return ScanFalse(target: target, index: result.index)
       }
@@ -72,7 +74,7 @@ extension Scanner: Standard {
     let method = { (target: String, cursor: Int) -> ScanResult in
       let isLast = cursor == target.characters.count
       if isLast {
-        return ScanTrue(target: target, index: -1, data: [])
+        return ScanTrue(target: target, index: -1, data: [], params: [:])
       } else {
         return ScanFalse(target: target, index: cursor)
       }
@@ -89,7 +91,7 @@ extension Scanner: Standard {
 
         while true {
           let result = scanner.method(target: target, cursor: current)
-          if result {
+          if result.isSuccess {
             rtnData.appendContentsOf(result.data)
             current = result.index
           } else {
@@ -98,7 +100,7 @@ extension Scanner: Standard {
         }
 
         if rtnData.count > 0 {
-          return ScanTrue(target: target, index: current, data: rtnData)
+          return ScanTrue(target: target, index: current, data: rtnData, params: [:])
         } else {
           return ScanFalse(target: target, index: current)
         }
@@ -116,10 +118,10 @@ extension Scanner: Standard {
       method: { (target: String, cursor: Int) -> Result in
         let result = scanner.method(target: target, cursor: cursor)
 
-      if result {
+      if result.isSuccess {
         return ScanFalse(target: target, index: cursor)
       } else {
-        return ScanTrue(target: target, index: cursor, data: [])
+        return ScanTrue(target: target, index: cursor, data: [], params: [:])
       }
     })
   }
@@ -142,14 +144,14 @@ extension Scanner: Standard {
         for scanner in scanners {
           let result = scanner.method(target: target, cursor: current)
 
-          if result {
+          if result.isSuccess {
             rtnData.appendContentsOf(result.data)
             current = result.index
           } else {
             return ScanFalse(target: target, index: cursor)
           }
         }
-        return ScanTrue(target: target, index: current, data: rtnData)
+        return ScanTrue(target: target, index: current, data: rtnData, params: [:])
     })
   }
 
@@ -169,10 +171,11 @@ extension Scanner: Standard {
     return Scanner(name: "CONCAT[\(prevName)]",
       method: { (target, cursor) -> Result in
         let result = scanner.method(target: target, cursor: cursor)
-        if result {
+        if result.isSuccess {
           return ScanTrue(target: target,
             index: result.index,
-            data: [result.data.reduce("") {$0 + $1}])
+            data: [result.data.reduce("") {$0 + $1}],
+            params: [:])
         } else {
           return ScanFalse(target: target, index: result.index)
         }

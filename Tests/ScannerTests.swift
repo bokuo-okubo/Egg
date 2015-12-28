@@ -42,7 +42,7 @@ class ScannerTests: EggTestBase {
 
     let real = emptyToken.resolve("")
 
-    let expect = ScanTrue(target: "", index: 0, data: [])
+    let expect = ScanTrue(target: "", index: 0, data: [], params: [:])
     XCTAssertEqual(real.target, expect.target)
     XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)

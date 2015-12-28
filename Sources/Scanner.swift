@@ -13,28 +13,31 @@ public class ScanResult: Resultable {
   public typealias Target = String
   public typealias Content = String
 
-  public let boolValue: Bool
+  public let isSuccess: Bool
   public let target: Target
   public let index: Int
   public let data: [Content]
 
-  public init(isSuccess: Bool, target: Target, index: Int, data: [Content]) {
-    self.boolValue = isSuccess
+  public var params: [String : String?]
+
+  public init(isSuccess: Bool,target: Target, index: Int, data: [Content], params: [String: String?]) {
+    self.isSuccess = isSuccess
     self.target = target
     self.index = index
     self.data = data
+      self.params = params
   }
 }
 
 public final class ScanTrue: ScanResult {
-  public init(target: String, index: Int, data: [String]) {
-    super.init(isSuccess: true, target: target, index: index, data: data)
+  public init(target: String, index: Int, data: [String], params: [String:String?]) {
+    super.init(isSuccess: true, target: target, index: index, data: data, params: params)
   }
 }
 
 public final class ScanFalse: ScanResult {
   public init(target: String, index: Int) {
-    super.init(isSuccess: false, target: target, index: index, data: [])
+    super.init(isSuccess: false, target: target, index: index, data: [], params: [:])
   }
 }
 
@@ -77,7 +80,7 @@ public final class Scanner: Scannable {
       let range = stringRange(target, upper: cursor, to: length)
 
       if target.substringWithRange(range) == symbol {
-        return ScanTrue(target: target, index: cursor + length, data: [symbol])
+        return ScanTrue(target: target, index: cursor + length, data: [symbol], params: [:])
       } else {
         return ScanFalse(target: target, index: cursor)
       }
@@ -89,7 +92,7 @@ public final class Scanner: Scannable {
     return Scanner(name: "EMPTY",
       method: { (target, cursor) -> ScanResult in
         if target.characters.count == 0 {
-          return ScanTrue(target: target, index: cursor, data: [])
+          return ScanTrue(target: target, index: cursor, data: [], params: [:])
         } else {
           return ScanFalse(target: target, index: cursor)
         }

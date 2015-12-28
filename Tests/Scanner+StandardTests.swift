@@ -38,12 +38,12 @@ class Scanner_StandardTests: EggTestBase {
     let expectHoge = ScanTrue(
       target: "hoge",
       index: "hoge".characters.count,
-      data: ["hoge"]) as ScanResult
+      data: ["hoge"], params: [:]) as ScanResult
 
     let expectFoo = ScanTrue(
       target: "foo",
       index: "foo".characters.count,
-      data: ["foo"]) as ScanResult
+      data: ["foo"], params: [:]) as ScanResult
 
     let testList = [
       ("hoge", expectHoge),
@@ -84,7 +84,7 @@ class Scanner_StandardTests: EggTestBase {
       "あいうえお",
       "0123456"
       ].map({
-        ($0, ScanTrue(target: $0, index: 0, data: []) as ScanResult)
+        ($0, ScanTrue(target: $0, index: 0, data: [], params: [:]) as ScanResult)
       })
 
     for (tag, expect) in testList {
@@ -113,7 +113,7 @@ class Scanner_StandardTests: EggTestBase {
     let real = HogeFooT.resolve("hogefoo")
     let expect = ScanTrue(target: "hogefoo",
       index: "hogefoo".characters.count,
-      data: ["hoge", "foo"])
+      data: ["hoge", "foo"], params: [:])
     assert(real, expect)
   }
 
@@ -134,7 +134,7 @@ class Scanner_StandardTests: EggTestBase {
     let testStr = "hogehoge"
     let manyHoge = Scanner.many(hogeT)
     let real = manyHoge.resolve(testStr)
-    let expect = ScanTrue(target: testStr, index: testStr.characters.count, data: ["hoge","hoge"])
+    let expect = ScanTrue(target: testStr, index: testStr.characters.count, data: ["hoge","hoge"], params: [:])
     XCTAssertEqual(real.target, expect.target)
     XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
@@ -149,7 +149,7 @@ class Scanner_StandardTests: EggTestBase {
       let real = manyHogeOrFooT.resolve(testStr)
       let expect = ScanTrue(target: testStr,
         index: testStr.characters.count,
-        data: ["hoge", "foo", "hoge", "foo"])
+        data: ["hoge", "foo", "hoge", "foo"], params: [:])
       assert(real, expect)
     }
 
@@ -170,7 +170,7 @@ class Scanner_StandardTests: EggTestBase {
 
     let testStrList = alphaStr.characters.map({ String($0)})
     let tuples = testStrList.map({
-      ($0, ScanTrue(target: $0, index: $0.characters.count, data: [$0]) as ScanResult)
+      ($0, ScanTrue(target: $0, index: $0.characters.count, data: [$0], params: [:]) as ScanResult)
     })
     execTest(tuples, scanner: alphaT)
   }

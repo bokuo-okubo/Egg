@@ -17,7 +17,7 @@ class CombinedTokenTests: EggTestBase {
     let real = paramT.resolve(testStr)
     let expect = ScanTrue(target: testStr,
       index: testStr.characters.count,
-      data: ["/:hoge"])
+      data: ["/:hoge"], params: [:])
 
     XCTAssertEqual(real.target, expect.target)
     XCTAssertEqual(real.isSuccess, expect.isSuccess)
@@ -31,7 +31,7 @@ class CombinedTokenTests: EggTestBase {
     let real = paramSepalatorT.resolve(testStr)
     let expect = ScanTrue(target: testStr,
       index: testStr.characters.count,
-      data: testStr.characters.map{ String($0) })
+      data: testStr.characters.map{ String($0) }, params: [:])
 
     XCTAssertEqual(real.target, expect.target)
     XCTAssertEqual(real.isSuccess, expect.isSuccess)
@@ -45,7 +45,7 @@ class CombinedTokenTests: EggTestBase {
 
     let expect = ScanTrue(target:entryAPIScheme,
       index: entryAPIScheme.characters.count,
-      data: expectTokenized)
+      data: expectTokenized, params: [:])
     let real = manyPathAndParamT.resolve(entryAPIScheme)
 
     XCTAssertEqual(real.target, expect.target)
@@ -61,7 +61,7 @@ class CombinedTokenTests: EggTestBase {
 
     let expect = ScanTrue(target:entryAPIScheme,
       index: -1,
-      data: expectTokenized)
+      data: expectTokenized, params: [:])
     let real = MockToken.urlPathSchemeToken.resolve(entryAPIScheme)
 
     XCTAssertEqual(real.target, expect.target)
@@ -82,7 +82,7 @@ class CombinedTokenTests: EggTestBase {
     ]
 
     for (expectTokenized, entryAPIScheme) in zip(expectTokenizeds, entryAPISchemes) {
-      let expect = ScanTrue(target: entryAPIScheme, index: -1, data: expectTokenized)
+      let expect = ScanTrue(target: entryAPIScheme, index: -1, data: expectTokenized, params: [:])
 
       let real = MockToken.urlPathSchemeToken.resolve(entryAPIScheme)
       XCTAssertEqual(real.target, expect.target)
