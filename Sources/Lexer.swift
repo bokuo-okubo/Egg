@@ -8,22 +8,33 @@
 
 import Foundation
 
-public class LexResult<TokenType>: Resultable {
+public protocol TokenType {
+  var name: String { get }
+}
+
+public struct VoidToken {
+  let name: String
+  init() {
+    self.name = "VOID"
+  }
+}
+
+public class LexResult {
   public typealias Target = String
   public typealias Content = TokenType
 
   public let isSuccess: Bool
   public let target: Target
-  public let data: [Content]
+  public let data: Content
 
-  public init(isSuccess: Bool, target: Target, data: [Content]) {
+  public init(isSuccess: Bool, target: Target, data: Content) {
     self.isSuccess = isSuccess
     self.target = target
     self.data = data
   }
 }
 
-public final class Lexer<TokenType> {
+public final class Lexer {
 
   let scanner: Scanner
   let token: TokenType
@@ -33,11 +44,11 @@ public final class Lexer<TokenType> {
     self.token = token
   }
 
-  public func tokenize(str: String) -> LexResult<TokenType> {
+  public func tokenize(str: String) -> LexResult {
     if scanner.resolve(str).isSuccess {
-      return LexResult(isSuccess: true, target: str, data: [self.token])
+      return LexResult(isSuccess: true, target: str, data: self.token)
     } else {
-      return LexResult(isSuccess: false, target: str, data: [])
+      return LexResult(isSuccess: false, target: str, data: VoidToken() as! TokenType)
     }
   }
 }
