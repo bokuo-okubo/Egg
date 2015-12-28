@@ -16,7 +16,7 @@ public class LexResult<TokenType>: Resultable {
   public let target: Target
   public let data: [Content]
 
-  init(isSuccess: Bool, target: Target, data: [Content]) {
+  public init(isSuccess: Bool, target: Target, data: [Content]) {
     self.isSuccess = isSuccess
     self.target = target
     self.data = data
