@@ -18,13 +18,13 @@ class LexResult: Resultable {
   typealias Target = String
   typealias Content = Token
 
-  let boolValue: Bool
+  let isSuccess: Bool
   let target: Target
   let index: Int
   let data: [Content]
 
   init(isSuccess: Bool, target: Target, index: Int, data: [Content]) {
-    self.boolValue = isSuccess
+    self.isSuccess = isSuccess
     self.target = target
     self.index = index
     self.data = data
@@ -63,7 +63,7 @@ final class Lexer {
   func tokenize(target: String) -> Token {
 
     for (scanner, token) in tokenList {
-      if scanner.resolve(target) {
+      if scanner.resolve(target).isSuccess {
         return token
       } else {
         continue

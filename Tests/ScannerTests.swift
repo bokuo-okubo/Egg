@@ -23,7 +23,7 @@ class ScannerTests: EggTestBase {
 
   func assert(real: ScanResult, _ expect: ScanResult) {
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -44,7 +44,7 @@ class ScannerTests: EggTestBase {
 
     let expect = ScanTrue(target: "", index: 0, data: [])
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -55,7 +55,7 @@ class ScannerTests: EggTestBase {
     let real = emptyToken.resolve("ll")
     let expect = ScanFalse(target: "ll", index: 0)
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -70,7 +70,7 @@ class ScannerTests: EggTestBase {
       "ho--ge"
     ]
     for real in testList.map({ HogeT.resolve($0) }) {
-      XCTAssertEqual(real.boolValue, expect.boolValue)
+      XCTAssertEqual(real.isSuccess, expect.isSuccess)
       XCTAssertEqual(real.index, expect.index)
       XCTAssertEqual(real.data, expect.data)
     }

@@ -6,15 +6,11 @@
 //  Copyright © 2015 bko. All rights reserved.
 //
 
-public protocol Resultable: BooleanType {
+public protocol Resultable {
   typealias Target
   typealias Content
-  var boolValue: Bool { get }
+  var isSuccess: Bool { get }
   var target: Target { get }
   var index: Int { get }
   var data: [Content] { get }
-
-  //  init(isSuccess:Bool, target: Target, index: Int, data: [Content])
 }
-
-

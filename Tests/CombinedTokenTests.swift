@@ -20,7 +20,7 @@ class CombinedTokenTests: EggTestBase {
       data: ["/:hoge"])
 
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
 
@@ -34,7 +34,7 @@ class CombinedTokenTests: EggTestBase {
       data: testStr.characters.map{ String($0) })
 
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -49,7 +49,7 @@ class CombinedTokenTests: EggTestBase {
     let real = manyPathAndParamT.resolve(entryAPIScheme)
 
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
 
@@ -65,7 +65,7 @@ class CombinedTokenTests: EggTestBase {
     let real = MockToken.urlPathSchemeToken.resolve(entryAPIScheme)
 
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
 
@@ -86,7 +86,7 @@ class CombinedTokenTests: EggTestBase {
 
       let real = MockToken.urlPathSchemeToken.resolve(entryAPIScheme)
       XCTAssertEqual(real.target, expect.target)
-      XCTAssertEqual(real.boolValue, expect.boolValue)
+      XCTAssertEqual(real.isSuccess, expect.isSuccess)
       XCTAssertEqual(real.index, expect.index)
       XCTAssertEqual(real.data, expect.data)
     }

@@ -18,7 +18,7 @@ class Scanner_StandardTests: EggTestBase {
 
   func assert(real: ScanResult, _ expect: ScanResult) {
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -52,7 +52,7 @@ class Scanner_StandardTests: EggTestBase {
     for (tag, expect) in testList {
       let real = hogeOrFooT.resolve(tag)
       XCTAssertEqual(real.target, expect.target)
-      XCTAssertEqual(real.boolValue, expect.boolValue)
+      XCTAssertEqual(real.isSuccess, expect.isSuccess)
       XCTAssertEqual(real.index, expect.index)
       XCTAssertEqual(real.data, expect.data)
     }
@@ -90,7 +90,7 @@ class Scanner_StandardTests: EggTestBase {
     for (tag, expect) in testList {
       let real = NotHogeT.resolve(tag)
       XCTAssertEqual(real.target, expect.target)
-      XCTAssertEqual(real.boolValue, expect.boolValue)
+      XCTAssertEqual(real.isSuccess, expect.isSuccess)
       XCTAssertEqual(real.index, expect.index)
       XCTAssertEqual(real.data, expect.data)
     }
@@ -136,7 +136,7 @@ class Scanner_StandardTests: EggTestBase {
     let real = manyHoge.resolve(testStr)
     let expect = ScanTrue(target: testStr, index: testStr.characters.count, data: ["hoge","hoge"])
     XCTAssertEqual(real.target, expect.target)
-    XCTAssertEqual(real.boolValue, expect.boolValue)
+    XCTAssertEqual(real.isSuccess, expect.isSuccess)
     XCTAssertEqual(real.index, expect.index)
     XCTAssertEqual(real.data, expect.data)
   }
@@ -187,7 +187,7 @@ class Scanner_StandardTests: EggTestBase {
     for (tag, expect) in tuples {
       let real = alphaT.resolve(tag)
       XCTAssertEqual(real.target, expect.target)
-      XCTAssertEqual(real.boolValue, expect.boolValue)
+      XCTAssertEqual(real.isSuccess, expect.isSuccess)
       XCTAssertEqual(real.index, expect.index)
       XCTAssertEqual(real.data, expect.data)
     }
