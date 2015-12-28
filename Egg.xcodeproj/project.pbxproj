@@ -14,7 +14,6 @@
 		787ABE361C3097C900D61462 /* Lexer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787ABE351C3097C900D61462 /* Lexer.swift */; };
 		787ABE391C3097CF00D61462 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787ABE371C3097CF00D61462 /* Scanner.swift */; };
 		787ABE3A1C3097CF00D61462 /* Scanner+Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787ABE381C3097CF00D61462 /* Scanner+Standard.swift */; };
-		789EF0831C30EA4100C955F0 /* LexerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789EF0821C30EA4100C955F0 /* LexerTests.swift */; };
 		78B33B1D1C2C0479002D4DDE /* MockToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B33B1C1C2C0479002D4DDE /* MockToken.swift */; };
 		78B33B201C2C05C2002D4DDE /* CombinedTokenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B33B1E1C2C058B002D4DDE /* CombinedTokenTests.swift */; };
 		78B33B231C2C1AA2002D4DDE /* ScannerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B33B211C2C163E002D4DDE /* ScannerTests.swift */; };
@@ -41,7 +40,6 @@
 		787ABE351C3097C900D61462 /* Lexer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lexer.swift; sourceTree = "<group>"; };
 		787ABE371C3097CF00D61462 /* Scanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		787ABE381C3097CF00D61462 /* Scanner+Standard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Scanner+Standard.swift"; sourceTree = "<group>"; };
-		789EF0821C30EA4100C955F0 /* LexerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LexerTests.swift; sourceTree = "<group>"; };
 		78B33B1C1C2C0479002D4DDE /* MockToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockToken.swift; sourceTree = "<group>"; };
 		78B33B1E1C2C058B002D4DDE /* CombinedTokenTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CombinedTokenTests.swift; sourceTree = "<group>"; };
 		78B33B211C2C163E002D4DDE /* ScannerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerTests.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				78B33B1C1C2C0479002D4DDE /* MockToken.swift */,
 				78B33B1E1C2C058B002D4DDE /* CombinedTokenTests.swift */,
 				78B93F9D1C2AA22D00924B6D /* Info.plist */,
-				789EF0821C30EA4100C955F0 /* LexerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 				78B33B1D1C2C0479002D4DDE /* MockToken.swift in Sources */,
 				78025D3E1C2AB2BE00309E00 /* EggTestBase.swift in Sources */,
 				78B33B231C2C1AA2002D4DDE /* ScannerTests.swift in Sources */,
-				789EF0831C30EA4100C955F0 /* LexerTests.swift in Sources */,
 				78B33B201C2C05C2002D4DDE /* CombinedTokenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
