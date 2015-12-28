@@ -11,6 +11,5 @@ public protocol Resultable {
   typealias Content
   var isSuccess: Bool { get }
   var target: Target { get }
-  var index: Int { get }
   var data: [Content] { get }
 }

@@ -8,71 +8,36 @@
 
 import Foundation
 
-enum Token {
-  case VOID
-  case RESOURCE
-  case PARAM
-}
+public class LexResult<TokenType>: Resultable {
+  public typealias Target = String
+  public typealias Content = TokenType
 
-class LexResult: Resultable {
-  typealias Target = String
-  typealias Content = Token
+  public let isSuccess: Bool
+  public let target: Target
+  public let data: [Content]
 
-  let isSuccess: Bool
-  let target: Target
-  let index: Int
-  let data: [Content]
-
-  init(isSuccess: Bool, target: Target, index: Int, data: [Content]) {
+  init(isSuccess: Bool, target: Target, data: [Content]) {
     self.isSuccess = isSuccess
     self.target = target
-    self.index = index
     self.data = data
   }
 }
 
-final class LexTrue: LexResult {
-  init(target: String, index: Int, data: [Token]) {
-    super.init(isSuccess: true, target: target, index: index, data: data)
-  }
-}
+public final class Lexer<TokenType> {
 
-final class LexFalse: LexResult {
-  init(target: String, index: Int) {
-    super.init(isSuccess: false, target: target, index: index, data: [])
-  }
-}
+  let scanner: Scanner
+  let token: TokenType
 
-
-protocol Lexable {
-  var tokenList: [(Scanner, Token)] { get }
-}
-
-final class Lexer {
-
-  var tokenList: [(Scanner, Token)]
-
-  init(tokenList: [(Scanner, Token)]) {
-    self.tokenList = tokenList
+  public init(token: TokenType, scanner: Scanner) {
+    self.scanner = scanner
+    self.token = token
   }
 
-  func register(scanner: Scanner, token: Token) {
-    self.tokenList.append( (scanner, token) )
-  }
-
-  func tokenize(target: String) -> Token {
-
-    for (scanner, token) in tokenList {
-      if scanner.resolve(target).isSuccess {
-        return token
-      } else {
-        continue
-      }
+  public func tokenize(str: String) -> LexResult<TokenType> {
+    if scanner.resolve(str).isSuccess {
+      return LexResult(isSuccess: true, target: str, data: [self.token])
+    } else {
+      return LexResult(isSuccess: false, target: str, data: [])
     }
-    return Token.VOID // TODO : tmp
-  }
-
-  func tokenize(targets: [String]) -> [Token] {
-    return targets.map({ self.tokenize($0) })
   }
 }
