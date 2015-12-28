@@ -106,4 +106,20 @@ public final class Scanner: Scannable {
   public func map(callback: Scanner -> Scanner) -> Scanner {
     return callback(self)
   }
+
+  public func concat() -> Scanner {
+    let prevName = self.name
+    return Scanner(name: "CONCAT[\(prevName)]",
+      method: { (target, cursor) -> Result in
+        let result = self.method(target: target, cursor: cursor)
+        if result.isSuccess {
+          return ScanTrue(target: target,
+            index: result.index,
+            data: [result.data.reduce("") {$0 + $1}],
+            params: [:])
+        } else {
+          return ScanFalse(target: target, index: result.index)
+        }
+    })
+  }
 }

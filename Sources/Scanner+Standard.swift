@@ -165,20 +165,4 @@ extension Scanner: Standard {
   public static func seq(scanners: Scanner...) -> Scanner {
     return seq(scanners)
   }
-
-  public static func concat(scanner: Scanner) -> Scanner {
-    let prevName = scanner.name
-    return Scanner(name: "CONCAT[\(prevName)]",
-      method: { (target, cursor) -> Result in
-        let result = scanner.method(target: target, cursor: cursor)
-        if result.isSuccess {
-          return ScanTrue(target: target,
-            index: result.index,
-            data: [result.data.reduce("") {$0 + $1}],
-            params: [:])
-        } else {
-          return ScanFalse(target: target, index: result.index)
-        }
-    })
-  }
 }

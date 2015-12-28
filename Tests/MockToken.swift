@@ -44,12 +44,12 @@ let numberT = $.char("0123456789")
 let urlCharsT = $.many( $.or(alphaT, numberT) ) // ID
 
 // path token "/hoge", "/foo"
-let primitivepathT = $.concat( $.seq( pathSepalatorT, urlCharsT ))
+let primitivepathT = $.seq( pathSepalatorT, urlCharsT ).concat()
 
 // private let pathT = $.map(primitivepathT, callback: callback )
 let pathT = primitivepathT
 
 // param token "/:hoge", ":hoge"
-let paramT = $.concat($.seq( paramSepalatorT, urlCharsT ))
+let paramT = $.seq( paramSepalatorT, urlCharsT ).concat()
 
 let manyPathAndParamT = $.many($.or(paramT, pathT))
