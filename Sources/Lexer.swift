@@ -36,19 +36,10 @@ public class LexResult {
 
 public final class Lexer {
 
-  let scanner: Scanner
-  let token: TokenType
+  var scanners: [(Scanner, TokenType)] = []
 
-  public init(token: TokenType, scanner: Scanner) {
-    self.scanner = scanner
-    self.token = token
+  public func registerScanners(scns: [(Scanner, TokenType)] ) {
+    scanners += scns
   }
 
-  public func tokenize(str: String) -> LexResult {
-    if scanner.resolve(str).isSuccess {
-      return LexResult(isSuccess: true, target: str, data: self.token)
-    } else {
-      return LexResult(isSuccess: false, target: str, data: VoidToken() as! TokenType)
-    }
-  }
 }
