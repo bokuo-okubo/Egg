@@ -88,11 +88,12 @@ extension Scanner: Standard {
 
         var current: Int = cursor
         var rtnData: [String] = []
-
+        var rtnParams: [String : String?] = [:]
         while true {
           let result = scanner.method(target: target, cursor: current)
           if result.isSuccess {
             rtnData.appendContentsOf(result.data)
+            rtnParams += result.params
             current = result.index
           } else {
             break
@@ -100,7 +101,7 @@ extension Scanner: Standard {
         }
 
         if rtnData.count > 0 {
-          return ScanTrue(target: target, index: current, data: rtnData, params: [:])
+          return ScanTrue(target: target, index: current, data: rtnData, params: rtnParams)
         } else {
           return ScanFalse(target: target, index: current)
         }
@@ -121,7 +122,7 @@ extension Scanner: Standard {
       if result.isSuccess {
         return ScanFalse(target: target, index: cursor)
       } else {
-        return ScanTrue(target: target, index: cursor, data: [], params: [:])
+        return ScanTrue(target: target, index: cursor, data: [], params: result.params)
       }
     })
   }
@@ -140,18 +141,20 @@ extension Scanner: Standard {
 
         var rtnData: [String] = []
         var current = cursor
+        var rtnParams: [String : String?] = [:]
 
         for scanner in scanners {
           let result = scanner.method(target: target, cursor: current)
 
           if result.isSuccess {
             rtnData.appendContentsOf(result.data)
+            rtnParams += result.params
             current = result.index
           } else {
             return ScanFalse(target: target, index: cursor)
           }
         }
-        return ScanTrue(target: target, index: current, data: rtnData, params: [:])
+        return ScanTrue(target: target, index: current, data: rtnData, params: rtnParams)
     })
   }
 
